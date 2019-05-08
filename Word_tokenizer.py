@@ -11,15 +11,16 @@ def main():
 	pathname = sys.argv[1]
 	destination = sys.argv[2]
 	stopword_path = sys.argv[3]
-	stop_file = open(stopword_path, 'r')		#passing the stop word list from the stopword file
+	num_of_doc = sys.argv[4]
+	#passing the stop word list from the stopword file
+	stop_file = open(stopword_path, 'r')		
 	stop_list = []
 	for line in stop_file:
 		w = line.split()
 		for word in w:
 			stop_list.append(word)
 	R = Counter()
-	#file_location = 'G:/Application_2016/Information_retreival/files_1/files/'+str(i)+'.html'
-	for i in range(1, 504):
+	for i in range(1, num_of_doc):
 		if i < 10:
 			file_location = pathname+'00'+str(i)+'.html'
 		if i >= 10 and i < 100:
@@ -49,11 +50,6 @@ def main():
 	os.remove("001.txt")
 	os.remove("001_s.txt")
 	os.remove("removing_hash_star.txt")
-
-
-
-
-
 
 
 def html_frequency_counter(file_location, stop_list):
