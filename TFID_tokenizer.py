@@ -12,6 +12,7 @@ def main():
 	pathname = sys.argv[1]
 	destination = sys.argv[2]
 	stopword_path = sys.argv[3]
+	number_of_doc = sys.argv[4]
 	stop_file = open(stopword_path, 'r')		#passing the stop word list from the stopword file
 	stop_list = []
 	for line in stop_file:
@@ -19,9 +20,6 @@ def main():
 		for word in w:
 			stop_list.append(word)
 	R = Counter()
-	#pathname = 'G:/Application_2016/Information_retreival/files_1/files/'
-	#destination = 'G:/Application_2016/Information_retreival/output_result/'
-	#Calculating the frequency count and finding the token frequency in all the document
 	for i in range(1, 504):
 		if i < 10:
 			file_location = pathname+'00'+str(i)+'.html'
@@ -36,7 +34,7 @@ def main():
 		#print(d)
 		R = R+d
 	# calculation of final TFIDF score
-	for i in range(1, 504):
+	for i in range(1, number_of_doc):
 		if i < 10:
 			file_location = pathname+'00'+str(i)+'.html'
 		if i >= 10 and i < 100:
